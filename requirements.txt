@@ -1,0 +1,41 @@
+# ============================================================
+# QuantumWatch - Requirements
+# ============================================================
+
+# Core data & analysis
+requests>=2.31
+pandas>=2.1
+numpy>=1.26
+pyarrow>=14.0
+networkx>=3.2
+matplotlib>=3.8
+seaborn>=0.13
+scipy>=1.12
+tqdm>=4.66
+python-dotenv>=1.0
+
+# Real-time streaming (WebSocket)
+websockets>=12.0
+
+# ML / AI
+torch>=2.2
+torch-geometric>=2.4
+transformers>=4.38
+peft>=0.7
+datasets>=2.16
+trl>=0.8
+scikit-learn>=1.4
+openai>=1.30
+
+# Reporting & visualization
+jupyter>=1.0
+streamlit>=1.30
+
+# Crypto (quantum module analysis)
+cryptography>=42.0
+pycryptodome>=3.19
+
+# Optional (not imported in current code, useful for expansion)
+# alchemy-sdk>=12.0
+# web3>=6.15
+# rich>=13.0   
