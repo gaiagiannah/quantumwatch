@@ -1,0 +1,41 @@
+name: QuantumWatch Automated Security Audit
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  quantum-security-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install streamlit plotly pandas torch torch-geometric
+
+      - name: Run Test Forensic Scan
+        run: |
+          python cli.py \
+            --address "0x742d35Cc6634C0532925a3b844Bc454e4438f44e" \
+            --value-usd 2000000 \
+            --pubkey-exposed \
+            --gat-score 0.4 \
+            --trace-score 0.3 \
+            --out-report audit_summary.md
+
+      - name: Upload Audit Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: quantumwatch-audit-report
+          path: audit_summary.md
